@@ -13,42 +13,55 @@ class Game {
         //Lista de imgs desordenadas
         this.orderForThisRound = new CollectionImgs(difficult).orderForThisRound;
 
-        // //Etiquetas del tablero
-        // this.cards = Array.from(document.getElementById('gameBox').children);
 
         //Máximo de parejas
         this.maxPairNumber = this.orderForThisRound.length / 2;
 
         this.startGame();
+
+        // //Etiquetas del tablero
+        this.cards = null;
     }
 
     //Comenzar juego
     startGame() {
         this.foundPairs = 0;
         this.setImgsInCards();
-        // this.openCards();
+        this.cards = Array.from(document.querySelectorAll('#gameBox img'));
+        this.openCards();
     }
 
     //Rellenar tablero
     setImgsInCards() {
         for (let index = 0; index < this.orderForThisRound.length; index++) {
             const newImg = document.createElement('img');
-            newImg.src = '/assets/img/caja-sorpresa.png';
+            newImg.src = this.orderForThisRound[index];
             document.getElementById('gameBox').appendChild(newImg);
         }
     }
 
     //Abrir todas las tarjetas
     openCards() {
-        //this.cards.forEach(card => card.classList.add('opened'));
+        console.log(this.cards);
+        for (const iterator of this.cards) {
+            iterator.classList.add('open')
+        }
+        console.log(this.cards);
+        console.log('before');
         setTimeout(() => {
             this.closeCards();
+            console.log('after');
         }, 3000);
     }
 
     //Cerrar todas las tarjetas
     closeCards() {
-        // this.cards.forEach(card => card.classList.add('removed'));
+        for (const iterator of this.cards) {
+            iterator.classList.remove('open')
+            iterator.classList.add('close')
+        }
+        /*         this.cards.forEach(card => card.classList.remove('open'));
+                this.cards.forEach(card => card.classList.add('close')); */
         this.addClickEvents();
         this.canPlay = true;
     }
@@ -83,7 +96,7 @@ class Game {
                 this.canPlay = true;
                 this.checkIfWon();
             } else {
-                if(this.difficult === 'hard') {
+                if (this.difficult === 'hard') {
                     this.setNewGame();
                 }
                 this.canPlay = false;
@@ -129,30 +142,30 @@ class CollectionImgs {
         //Lista de imgs
         this.availablesImgs = [
             [
-                'ahmer-kalam-ye9dfyrlJ7Y-unsplash.jpg',
-                'dulana-kodithuwakku-VH23jkS_ods-unsplash.jpg',
-                'grace-nandy-x12SorTRAW8-unsplash.jpg',
-                'ibrahim-uzun-BNDF1KVYL3k-unsplash.jpg',
-                'peter-neumann-xFs5m1RLPRk-unsplash.jpg',
-                'photo-1635866869385-fabb68f0dea0.jpg',
-                'rod-long-BSz0jJ172vM-unsplash.jpg'
+                '/assets/img/ahmer-kalam-ye9dfyrlJ7Y-unsplash.jpg',
+                '/assets/img/dulana-kodithuwakku-VH23jkS_ods-unsplash.jpg',
+                '/assets/img/grace-nandy-x12SorTRAW8-unsplash.jpg',
+                '/assets/img/ibrahim-uzun-BNDF1KVYL3k-unsplash.jpg',
+                '/assets/img/peter-neumann-xFs5m1RLPRk-unsplash.jpg',
+                '/assets/img/photo-1635866869385-fabb68f0dea0.jpg',
+                '/assets/img/rod-long-BSz0jJ172vM-unsplash.jpg'
             ],
             [
-                'rod-long-BSz0jJ172vM-unsplash.jpg',
-                'photo-1635866869385-fabb68f0dea0.jpg',
-                'peter-neumann-xFs5m1RLPRk-unsplash.jpg',
-                'grace-nandy-x12SorTRAW8-unsplash.jpg',
-                'dulana-kodithuwakku-VH23jkS_ods-unsplash.jpg',
-                'ahmer-kalam-ye9dfyrlJ7Y-unsplash.jpg',
-                'ibrahim-uzun-BNDF1KVYL3k-unsplash.jpg',
-                'rod-long-BSz0jJ172vM-unsplash.jpg'
+                '/assets/img/rod-long-BSz0jJ172vM-unsplash.jpg',
+                '/assets/img/photo-1635866869385-fabb68f0dea0.jpg',
+                '/assets/img/peter-neumann-xFs5m1RLPRk-unsplash.jpg',
+                '/assets/img/grace-nandy-x12SorTRAW8-unsplash.jpg',
+                '/assets/img/dulana-kodithuwakku-VH23jkS_ods-unsplash.jpg',
+                '/assets/img/ahmer-kalam-ye9dfyrlJ7Y-unsplash.jpg',
+                '/assets/img/ibrahim-uzun-BNDF1KVYL3k-unsplash.jpg',
+                '/assets/img/rod-long-BSz0jJ172vM-unsplash.jpg'
             ],
         ];
         this.orderForThisRound = [];
         this.chooseDifficult(difficult);
     }
 
-    chooseDifficult(difficult){
+    chooseDifficult(difficult) {
         switch (difficult) {
             case 'baby':
                 this.setNewOrderBaby();
@@ -168,9 +181,9 @@ class CollectionImgs {
     setNewOrderBaby() {
         const posRandom = Math.floor(Math.random() * this.availablesImgs.length);
         this.selectedImgs = this.availablesImgs[posRandom];
-        const card = Math.floor(Math.random() *this.availablesImgs[posRandom].length);
+        const card = Math.floor(Math.random() * this.availablesImgs[posRandom].length);
         for (let index = 0; index < this.availablesImgs[posRandom].length * 2; index++) {
-            this.orderForThisRound.push(this.availablesImgs[card]);
+            this.orderForThisRound.push(this.availablesImgs[posRandom][card]);
         }
     }
 

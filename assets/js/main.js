@@ -15,6 +15,7 @@ btnChooseMode.addEventListener('click', function () {
 });
 
 btnBabyMode.addEventListener('click', function () {
+    btnBabyMode.href = '#gamePage';
     game = new Game('baby');
     console.log('Baby', game);
 });

@@ -63,11 +63,22 @@ section>#gameBox {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     height: auto;
+    width: auto;
     gap: 5px;
     place-items: center;
+    padding-bottom: 10px;
 }
 
-#gameBox>img {
-    width: 60%;
-    height: 60%;
+#gameBox>img,
+a {
+    width: 80%;
+    height: 100%;
+}
+
+.open {
+    filter: brightness(1);
+}
+
+.close {
+    filter: brightness(0);
 }
