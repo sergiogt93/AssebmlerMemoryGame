@@ -161,5 +161,18 @@ class Statistics {
             'username': username,
             'puntuation': puntuation
         }
+        this.allUsers = [];
+        this.saveUserName();
+    }
+
+    saveUserName() {
+        if (localStorage.getItem('allUsers')) {
+            this.allUsers = JSON.parse(localStorage.getItem('allUsers'));
+            this.allUsers.push(this.gameCurrent);
+            localStorage.setItem('allUsers', JSON.stringify(this.allUsers));
+        } else {
+            this.allUsers.push(this.gameCurrent);
+            localStorage.setItem('allUsers', JSON.stringify(this.allUsers));
+        }
     }
 }
