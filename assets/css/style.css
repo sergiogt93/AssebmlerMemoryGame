@@ -1,4 +1,4 @@
-.mainPage {
+/* .mainPage {
     display: flex;
     gap: 20px;
 }
@@ -10,13 +10,64 @@
     place-items: center;
     width: 80%;
 }
-
+/*
 #scorePage {
     display: grid;
     place-self: top;
 }
 
 #memoryGame > img {
+    width: 60%;
+    height: 60%;
+}
+*/
+
+section {
+    height: 100vh;
+    background-color: whitesmoke;
+    display: flex;
+    flex-flow: column-reverse wrap;
+    justify-content: center;
+    gap: 10px 10px;
+}
+
+section>div {
+    background-color: white;
+    border: solid 1px;
+    height: 30%;
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 10px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgb(143, 139, 139);
+    display: grid;
+    place-items: center;
+}
+
+button {
+    width: 65%;
+    height: 30px;
+    background-color: black;
+    color: white;
+}
+
+section>details {
+    border: solid 1px red;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgb(143, 139, 139);
+}
+
+section>#gameBox {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: auto;
+    gap: 5px;
+    place-items: center;
+}
+
+#gameBox>img {
     width: 60%;
     height: 60%;
 }

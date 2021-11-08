@@ -30,8 +30,8 @@ class Game {
     setImgsInCards() {
         for (let index = 0; index < this.orderForThisRound.length; index++) {
             const newImg = document.createElement('img');
-            newImg.src = './caja-sorpresa.png';
-            document.getElementById('memoryGame').appendChild(newImg);
+            newImg.src = '/assets/img/caja-sorpresa.png';
+            document.getElementById('gameBox').appendChild(newImg);
         }
     }
 
@@ -40,7 +40,7 @@ class Game {
         this.cards.forEach(card => card.classList.add('opened'));
         setTimeout(() => {
             this.closeCards();
-        },3000);
+        }, 3000);
     }
 
     //Cerrar todas las tarjetas
@@ -64,7 +64,7 @@ class Game {
     flipCard(e) {
         const clickedCard = e.target;
 
-        if(this.canPlay && !clickedCard.classList.contains('opened')) {
+        if (this.canPlay && !clickedCard.classList.contains('opened')) {
             clickedCard.classList.contains('opened')
             this.checkPair(clickedCard.dataset.img);
         }
@@ -72,11 +72,11 @@ class Game {
 
     //Revisar la pareja
     checkPair(image) {
-        if(!this.card1) this.card1 = image;
+        if (!this.card1) this.card1 = image;
         else this.card2 = image;
 
-        if(this.card1 && this.card2) {
-            if(this.card1 === this.card2) {
+        if (this.card1 && this.card2) {
+            if (this.card1 === this.card2) {
                 this.canPlay = true;
                 this.checkIfWon();
             } else {
@@ -148,7 +148,7 @@ class CollectionImgs {
 
     //Barajar las imagenes
     setNewOrder() {
-        const posRandom = Math.floor(Math.random()*this.availablesImgs.length);
+        const posRandom = Math.floor(Math.random() * this.availablesImgs.length);
         this.selectedImgs = this.availablesImgs[posRandom];
         this.orderForThisRound = this.selectedImgs.concat(this.selectedImgs);
         this.orderForThisRound.sort(() => Math.random() - 0.5);
