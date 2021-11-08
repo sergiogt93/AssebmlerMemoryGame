@@ -1,5 +1,5 @@
 class Game {
-    constructor() {
+    constructor(difficult) {
         //Ver si puede jugar
         this.canPlay = false;
 
@@ -7,11 +7,14 @@ class Game {
         this.card1 = null;
         this.card2 = null;
 
+        //Elegir tipo de dificultad
+        this.difficult = null;
+
         //Lista de imgs desordenadas
-        this.orderForThisRound = new CollectionImgs().orderForThisRound;
+        this.orderForThisRound = new CollectionImgs(difficult).orderForThisRound;
 
         // //Etiquetas del tablero
-        // this.cards = Array.from(document.getE);
+        // this.cards = Array.from(document.getElementById('gameBox').children);
 
         //Máximo de parejas
         this.maxPairNumber = this.orderForThisRound.length / 2;
@@ -37,15 +40,15 @@ class Game {
 
     //Abrir todas las tarjetas
     openCards() {
-        this.cards.forEach(card => card.classList.add('opened'));
+        //this.cards.forEach(card => card.classList.add('opened'));
         setTimeout(() => {
             this.closeCards();
         }, 3000);
     }
 
     //Cerrar todas las tarjetas
-    openCards() {
-        this.cards.forEach(card => card.classList.add('removed'));
+    closeCards() {
+        // this.cards.forEach(card => card.classList.add('removed'));
         this.addClickEvents();
         this.canPlay = true;
     }
@@ -80,6 +83,9 @@ class Game {
                 this.canPlay = true;
                 this.checkIfWon();
             } else {
+                if(this.difficult === 'hard') {
+                    this.setNewGame();
+                }
                 this.canPlay = false;
                 setTimeout(this.resetOpenedCards.bind(this), 800)
             }
@@ -119,7 +125,7 @@ class Game {
 }
 
 class CollectionImgs {
-    constructor() {
+    constructor(difficult) {
         //Lista de imgs
         this.availablesImgs = [
             [
@@ -143,10 +149,32 @@ class CollectionImgs {
             ],
         ];
         this.orderForThisRound = [];
-        this.setNewOrder();
+        this.chooseDifficult(difficult);
     }
 
-    //Barajar las imagenes
+    chooseDifficult(difficult){
+        switch (difficult) {
+            case 'baby':
+                this.setNewOrderBaby();
+                break;
+            case 'medium':
+            case 'hard':
+                this.setNewOrder();
+                break;
+        }
+    }
+
+    //Barajar las imagenes de baby
+    setNewOrderBaby() {
+        const posRandom = Math.floor(Math.random() * this.availablesImgs.length);
+        this.selectedImgs = this.availablesImgs[posRandom];
+        const card = Math.floor(Math.random() *this.availablesImgs[posRandom].length);
+        for (let index = 0; index < this.availablesImgs[posRandom].length * 2; index++) {
+            this.orderForThisRound.push(this.availablesImgs[card]);
+        }
+    }
+
+    //Barajar las imagenes de medio y dificil
     setNewOrder() {
         const posRandom = Math.floor(Math.random() * this.availablesImgs.length);
         this.selectedImgs = this.availablesImgs[posRandom];
