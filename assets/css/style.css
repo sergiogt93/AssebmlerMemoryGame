@@ -1,0 +1,22 @@
+.mainPage {
+    display: flex;
+    gap: 20px;
+}
+
+#memoryGame {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    place-items: center;
+    width: 80%;
+}
+
+#scorePage {
+    display: grid;
+    place-self: top;
+}
+
+#memoryGame > img {
+    width: 60%;
+    height: 60%;
+}
