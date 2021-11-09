@@ -1,3 +1,9 @@
+window.addEventListener('DOMContentLoaded',  (event) => {
+    allUsers = JSON.parse(localStorage.getItem('allUsers'));
+    scoreRanking();
+});
+
+
 btnChooseMode.addEventListener('click', function () {
     const valueUserName = document.querySelector('input').value;
     gameCurrent.username = valueUserName;

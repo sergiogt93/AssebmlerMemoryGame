@@ -173,10 +173,14 @@ function setNewGame() {
 
 function scoreRanking() {
     let scoreUl = document.createElement('ul');
-    const scoreSort = allUsers.puntuation.sort((a, b) => b - a);
+    const scoreSort = allUsers.sort((a, b) => b.puntuation - a.puntuation);
+    const divRankings = document.querySelectorAll('.ranking');
 
-    scoreSort.forEach(element => {
-        let scoreLi = document.createElement('li');
-        scoreLi.innerHTML = element;
+    divRankings.forEach(elementParent => {
+        scoreSort.forEach(element => {
+            let scoreP = document.createElement('p');
+            scoreP.innerHTML = 'Player: ' + element.username + '<br> Puntuation: ' + element.puntuation;
+            elementParent.appendChild(scoreP);
+        });
     });
 }
