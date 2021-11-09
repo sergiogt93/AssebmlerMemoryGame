@@ -13,7 +13,7 @@ function chooseDifficult(difficult) {
 
 function startGame() {
     currentScore = 100;
-    setInterval(() => {
+    timer = setInterval(() => {
         console.log('a');
         currentScore--;
         saveCurrentScore();
@@ -96,15 +96,18 @@ function flipCard(e) {
 
 //Limpiar las dos imagenes abiertas
 function resetOpenedCarts() {
-    card1.classList.remove("open");
-    card1.classList.add("close");
-    card2.classList.remove("open");
-    card2.classList.add("close");
+    setTimeout(() => {
+        card1.classList.remove("open");
+        card1.classList.add("close");
+        card2.classList.remove("open");
+        card2.classList.add("close");
 
-    card1 = null;
-    card2 = null;
+        card1 = null;
+        card2 = null;
 
-    canPlay = true;
+        canPlay = true;
+    }, 1000);
+
 }
 
 //Revisar la pareja
@@ -143,7 +146,8 @@ function checkIfWon() {
         document.getElementById('msgEndGame').innerHTML = '🥳 CONGRATULATIONS YOU WIN!! 🥳';
         endview.scrollIntoView();
         saveFinalScore();
-        setNewGame();
+        clearInterval(timer);
+        /* setNewGame(); */
     } else {
         card1 = null;
         card2 = null;

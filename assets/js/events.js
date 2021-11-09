@@ -1,7 +1,8 @@
 btnChooseMode.addEventListener('click', function () {
     const valueUserName = document.querySelector('input').value;
     gameCurrent.username = valueUserName;
-    gameCurrent.puntuation = 'Playing ...';
+    /*     gameCurrent.puntuation = 'Playing ...';
+     */
     saveUserName();
     showAllUsers();
     btnChooseMode.href = '#modePage';
@@ -9,7 +10,6 @@ btnChooseMode.addEventListener('click', function () {
 });
 
 btnBabyMode.addEventListener('click', function () {
-    gameCurrent.puntuation = 'Playing ...';
     btnBabyMode.href = '#gifPage';
     document.getElementsByTagName('body')[0].classList.add('gifBody');
     document.getElementById('gifDiv').classList.add('gifEasy');
@@ -24,7 +24,6 @@ btnBabyMode.addEventListener('click', function () {
 });
 
 btnMediumMode.addEventListener('click', function () {
-    gameCurrent.puntuation = 'Playing ...';
     btnMediumMode.href = '#gifPage';
     document.getElementsByTagName('body')[0].classList.add('gifBody');
     document.getElementById('gifDiv').classList.add('gifMedium');
@@ -38,7 +37,6 @@ btnMediumMode.addEventListener('click', function () {
 });
 
 btnHardMode.addEventListener('click', function () {
-    gameCurrent.puntuation = 'Playing ...';
     btnHardMode.href = '#gifPage';
     document.getElementsByTagName('body')[0].classList.add('gifBody');
     document.getElementById('gifDiv').classList.add('gifHard');

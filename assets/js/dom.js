@@ -18,8 +18,10 @@ function clearChilds() {
 function showAllUsers() {
     //console.log(scoreBox);
     scoreBox.forEach(box => {
-        clearChilds();
+        /*         clearChilds();
+         */
         allUsers.forEach(historic => {
+            console.log(allUsers);
             let currentUser = document.createElement('p');
             currentUser.innerHTML = `Player: <b>${historic.username}</b> <br> Score: <b>${historic.puntuation}</b> `;
             currentUser.classList.add('scoreData');
@@ -37,13 +39,14 @@ function saveUserName() {
         allUsers.push(gameCurrent);
         localStorage.setItem('allUsers', JSON.stringify(allUsers));
     }
+    allUsers = JSON.parse(localStorage.getItem('allUsers'));
 }
 
 function saveFinalScore() {
     scoreBox.forEach(box => {
         box.lastChild.remove();
         let currentUser = document.createElement('p');
-        finalScore = currentScore;
+        const finalScore = currentScore;
         gameCurrent.puntuation = finalScore;
         currentUser.innerHTML = `Player: <b>${gameCurrent.username}</b> <br> Score: <b>${gameCurrent.puntuation}</b> `;
         currentUser.classList.add('scoreData');
@@ -55,7 +58,7 @@ function saveCurrentScore() {
     scoreBox.forEach(box => {
         box.lastChild.remove();
         let currentUser = document.createElement('p');
-        gameCurrent.puntuation = finalScore;
+        gameCurrent.puntuation = currentScore;
         currentUser.innerHTML = `Player: <b>${gameCurrent.username}</b> <br> Score: <b>${gameCurrent.puntuation}</b> `;
         currentUser.classList.add('scoreData');
         box.appendChild(currentUser);
