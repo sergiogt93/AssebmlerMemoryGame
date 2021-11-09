@@ -173,6 +173,10 @@ function setNewGame() {
 
 function scoreRanking() {
     let scoreUl = document.createElement('ul');
-    allUsers.map((element) => element.puntuation).sort((a, b) => b - a);
+    const scoreSort = allUsers.puntuation.sort((a, b) => b - a);
 
+    scoreSort.forEach(element => {
+        let scoreLi = document.createElement('li');
+        scoreLi.innerHTML = element;
+    });
 }
