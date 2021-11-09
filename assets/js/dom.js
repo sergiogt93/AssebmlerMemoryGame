@@ -20,7 +20,7 @@ function showAllUsers() {
         clearChilds();
         allUsers.forEach(historic => {
             let currentUser = document.createElement('p');
-            currentUser.innerHTML = `Player: <b>${historic.username}</b>,<br> Score: <b>${historic.puntuation}</b> `;
+            currentUser.innerHTML = `Player: <b>${historic.username}</b> <br> Score: <b>${historic.puntuation}</b> `;
             currentUser.classList.add('scoreData');
             box.appendChild(currentUser);
         });
@@ -38,16 +38,25 @@ function saveUserName() {
     }
 }
 
-function finalScore() {
+function saveFinalScore() {
     scoreBox.forEach(box => {
-        console.log(box.lastChild);
         box.lastChild.remove();
-        clearChilds(allUsers);
-        allUsers.forEach(historic => {
-            let currentUser = document.createElement('p');
-            currentUser.innerHTML = `Player: <b>${historic.username}</b>,<br> Score: <b>${finalScore}</b> `;
-            currentUser.classList.add('scoreData');
-            box.appendChild(currentUser);
-        });
+        let currentUser = document.createElement('p');
+        finalScore = currentScore;
+        gameCurrent.puntuation = finalScore;
+        currentUser.innerHTML = `Player: <b>${gameCurrent.username}</b> <br> Score: <b>${gameCurrent.puntuation}</b> `;
+        currentUser.classList.add('scoreData');
+        box.appendChild(currentUser);
+    });
+}
+
+function saveCurrentScore() {
+    scoreBox.forEach(box => {
+        box.lastChild.remove();
+        let currentUser = document.createElement('p');
+        gameCurrent.puntuation = finalScore;
+        currentUser.innerHTML = `Player: <b>${gameCurrent.username}</b> <br> Score: <b>${gameCurrent.puntuation}</b> `;
+        currentUser.classList.add('scoreData');
+        box.appendChild(currentUser);
     });
 }

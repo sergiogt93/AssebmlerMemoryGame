@@ -8,18 +8,21 @@ btnChooseMode.addEventListener('click', function () {
 });
 
 btnBabyMode.addEventListener('click', function () {
+    gameCurrent.puntuation = 'Playing ...';
     btnBabyMode.href = '#gamePage';
     chooseDifficult('baby');
     startGame();
 });
 
 btnMediumMode.addEventListener('click', function () {
+    gameCurrent.puntuation = 'Playing ...';
     btnMediumMode.href = '#gamePage';
     chooseDifficult('medium');
     startGame();
 });
 
 btnHardMode.addEventListener('click', function () {
+    gameCurrent.puntuation = 'Playing ...';
     btnHardMode.href = '#gamePage';
     chooseDifficult('hard');
     startGame();

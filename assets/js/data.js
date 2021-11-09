@@ -46,3 +46,5 @@ var cards = null;
 //Puntuación
 
 var finalScore = 100;
+
+var currentScore = 100;

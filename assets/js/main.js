@@ -12,9 +12,10 @@ function chooseDifficult(difficult) {
 }
 
 function startGame() {
-    finalScore = 100;
+    currentScore = 100;
     setInterval(() => {
-        finalScore--;
+        currentScore--;
+        saveCurrentScore();
     }, 1000);
     //Número de pares encontrados
     foundPairs = 0;
@@ -139,7 +140,7 @@ function checkIfWon() {
     foundPairs++;
     if (MAX_PAIR_NUMBER === foundPairs) {
         endview.scrollIntoView();
-        finalScore();
+        saveFinalScore();
         setNewGame();
     } else {
         card1 = null;
