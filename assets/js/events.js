@@ -1,8 +1,7 @@
 btnChooseMode.addEventListener('click', function () {
     const valueUserName = document.querySelector('input').value;
     gameCurrent.username = valueUserName;
-    /*     gameCurrent.puntuation = 'Playing ...';
-     */
+    gameCurrent.puntuation = 'Playing ...';
     saveUserName();
     showAllUsers();
     btnChooseMode.href = '#modePage';

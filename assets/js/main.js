@@ -16,6 +16,10 @@ function startGame() {
     timer = setInterval(() => {
         console.log('a');
         currentScore--;
+        allUsers = JSON.parse(localStorage.getItem('allUsers'));
+        allUsers[allUsers.length - 1].puntuation = gameCurrent.puntuation;
+        localStorage.setItem('allUsers', JSON.stringify(allUsers));
+        allUsers = JSON.parse(localStorage.getItem('allUsers'));
         saveCurrentScore();
     }, 1000);
     //Número de pares encontrados
@@ -163,4 +167,12 @@ function setNewGame() {
     removeClickEvents();
     cards.forEach(card => card.classList.remove("open"));
     setTimeout(startGame(), 1000);
+}
+
+// Score Ranking
+
+function scoreRanking() {
+    let scoreUl = document.createElement('ul');
+    allUsers.map((element) => element.puntuation).sort((a, b) => b - a);
+
 }
