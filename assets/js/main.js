@@ -14,6 +14,7 @@ function chooseDifficult(difficult) {
 function startGame() {
     currentScore = 100;
     setInterval(() => {
+        console.log('a');
         currentScore--;
         saveCurrentScore();
     }, 1000);
@@ -139,6 +140,7 @@ function checkPair(image) {
 function checkIfWon() {
     foundPairs++;
     if (MAX_PAIR_NUMBER === foundPairs) {
+        document.getElementById('msgEndGame').innerHTML = '🥳 CONGRATULATIONS YOU WIN!! 🥳';
         endview.scrollIntoView();
         saveFinalScore();
         setNewGame();

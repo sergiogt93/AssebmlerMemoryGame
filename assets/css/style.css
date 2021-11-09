@@ -32,6 +32,7 @@ section {
     justify-content: center;
     gap: 10px 10px;
     margin: 10%;
+    padding-top: 30px;
 }
 
 section>div {
@@ -47,7 +48,7 @@ section>div {
     align-items: center;
     flex-flow: column;
     justify-content: center;
-    gap: 20px;
+    gap: 50px;
 }
 
 .btnA {
@@ -70,6 +71,7 @@ section>div {
     border: solid 1px rgba(128, 128, 128, 0.74);
     width: 90%;
     margin: 0 auto;
+    padding-left: 20px;
     border-radius: 5px;
     box-shadow: 5px 5px 5px rgb(143, 139, 139);
     background-color: white;
@@ -104,6 +106,46 @@ section>#gameBox {
     gap: 5px;
     place-items: center;
     padding-bottom: 10px;
+}
+
+.gifBody {
+    background-color: black;
+}
+
+.gifEasy {
+    width: 70%;
+    height: 30%;
+    margin: auto;
+    background: url('/assets/img/stock-footage-retro-videogame-easy-mode-activated-text-computer-old-tv-glitch-interference-noise-screen-animation.gif') !important;
+}
+
+.gifMedium {
+    width: 70%;
+    height: 30%;
+    margin: auto;
+    background: url('/assets/img/stock-footage-retro-videogame-good-game-text-computer-old-tv-glitch-interference-noise-screen-animation-seamless.gif') !important;
+}
+
+.gifHard {
+    width: 70%;
+    height: 30%;
+    margin: auto;
+    background: url('/assets/img/stock-footage-retro-videogame-hard-mode-activated-text-computer-old-tv-glitch-interference-noise-screen-animation.gif') !important;
+}
+
+
+.bodyBaby {
+    background-image: url('/assets/img/40712108-bebé-chupetes-dibujos-animados-patrón-de-fondo-sin-fisuras_opt.jpg');
+    background-repeat: repeat;
+    background-image: grayscale(100%)
+}
+
+.bodyMedium {}
+
+.bodyHard {
+    background-image: url('/assets/img/1000_F_167163226_ZL37TtYYKrKyAhMKIvycv3GiftIfZpLy.jpeg');
+    background-repeat: repeat;
+    background-image: grayscale(100%)
 }
 
 #gameBox>a {
@@ -148,5 +190,20 @@ img {
     #gameBox>a {
         width: 70%;
         height: 70%;
+    }
+
+    .gifEasy {
+        width: 596px;
+        height: 336px;
+    }
+
+    .gifMedium {
+        width: 596px;
+        height: 336px;
+    }
+
+    .gifHard {
+        width: 596px;
+        height: 336px;
     }
 }

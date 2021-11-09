@@ -6,6 +6,7 @@ const btnHardMode = document.querySelector('#hardMode');
 const endview = document.getElementById('endPage');
 const btnClear = document.getElementById('resetCookies');
 const btnReset = document.getElementById('resetGame');
+const gamePageView = document.getElementById('gamePage');
 
 function clearChilds() {
     let allChilds = Array.from(document.querySelectorAll('.scoreData'));

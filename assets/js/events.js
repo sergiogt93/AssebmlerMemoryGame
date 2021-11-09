@@ -5,27 +5,51 @@ btnChooseMode.addEventListener('click', function () {
     saveUserName();
     showAllUsers();
     btnChooseMode.href = '#modePage';
+    btnChooseMode.removeEventListener('click', function () {});
 });
 
 btnBabyMode.addEventListener('click', function () {
     gameCurrent.puntuation = 'Playing ...';
-    btnBabyMode.href = '#gamePage';
-    chooseDifficult('baby');
-    startGame();
+    btnBabyMode.href = '#gifPage';
+    document.getElementsByTagName('body')[0].classList.add('gifBody');
+    document.getElementById('gifDiv').classList.add('gifEasy');
+    setTimeout(() => {
+        document.getElementsByTagName('body')[0].classList.remove('gifBodyEasy');
+        document.getElementsByTagName('body')[0].classList.add('bodyBaby');
+        gamePageView.scrollIntoView();
+        chooseDifficult('baby');
+        startGame();
+    }, 3000);
+    btnBabyMode.removeEventListener('click', function () {});
 });
 
 btnMediumMode.addEventListener('click', function () {
     gameCurrent.puntuation = 'Playing ...';
-    btnMediumMode.href = '#gamePage';
-    chooseDifficult('medium');
-    startGame();
+    btnMediumMode.href = '#gifPage';
+    document.getElementsByTagName('body')[0].classList.add('gifBody');
+    document.getElementById('gifDiv').classList.add('gifMedium');
+    setTimeout(() => {
+        document.getElementsByTagName('body')[0].classList.remove('gifBody');
+        gamePageView.scrollIntoView();
+        chooseDifficult('medium');
+        startGame();
+    }, 3000);
+    btnMediumMode.removeEventListener('click', function () {});
 });
 
 btnHardMode.addEventListener('click', function () {
     gameCurrent.puntuation = 'Playing ...';
-    btnHardMode.href = '#gamePage';
-    chooseDifficult('hard');
-    startGame();
+    btnHardMode.href = '#gifPage';
+    document.getElementsByTagName('body')[0].classList.add('gifBody');
+    document.getElementById('gifDiv').classList.add('gifHard');
+    setTimeout(() => {
+        document.getElementsByTagName('body')[0].classList.remove('gifBody');
+        document.getElementsByTagName('body')[0].classList.add('bodyHard');
+        gamePageView.scrollIntoView();
+        chooseDifficult('hard');
+        startGame();
+    }, 3000);
+    btnHardMode.removeEventListener('click', function () {});
 });
 
 btnReset.addEventListener('click', function () {
