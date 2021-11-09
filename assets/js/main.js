@@ -40,8 +40,10 @@ function setNewOrder() {
 function setImgsInCards() {
     for (let index = 0; index < orderForThisRound.length; index++) {
         const newImg = document.createElement('img');
+        const imgA = document.createElement('a');
+        imgA.appendChild(newImg);
         newImg.src = orderForThisRound[index];
-        document.getElementById('gameBox').appendChild(newImg);
+        document.getElementById('gameBox').appendChild(imgA);
     }
 }
 
@@ -117,16 +119,22 @@ function checkPair(image) {
 //Revisar si ha ganado
 function checkIfWon() {
     foundPairs++;
-
-    card1 = null;
-    card2 = null;
-    canPlay = true;
-
-    if (MAX_PAIR_NUMBER === foundPairs) setNewGame();
+    if (MAX_PAIR_NUMBER === foundPairs) {
+        const endview = document.getElementById('endPage');
+        endview.scrollIntoView();
+        setNewGame();
+    } else {
+        card1 = null;
+        card2 = null;
+        canPlay = true;
+    }
 }
 
 // //Reiniciar el juego
 function setNewGame() {
+    card1 = null;
+    card2 = null;
+    canPlay = true;
     removeClickEvents();
     cards.forEach(card => card.classList.remove("open"));
     setTimeout(startGame(), 1000);

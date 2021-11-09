@@ -21,58 +21,78 @@
     height: 60%;
 }
 */
+body {
+    background-color: whitesmoke;
+}
 
 section {
     height: 100vh;
-    background-color: whitesmoke;
     display: flex;
     flex-flow: column-reverse wrap;
     justify-content: center;
     gap: 10px 10px;
+    margin: 10%;
 }
 
 section>div {
     background-color: white;
-    border: solid 1px;
-    height: 30%;
+    border: solid 1px rgba(128, 128, 128, 0.74);
+    height: 60%;
     width: 90%;
     margin: 0 auto;
     padding-top: 10px;
     border-radius: 5px;
     box-shadow: 5px 5px 5px rgb(143, 139, 139);
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    justify-content: center;
+    gap: 20px;
 }
 
-button {
+.btnA {
     width: 65%;
     height: 30px;
     background-color: black;
     color: white;
 }
 
+.btnA>button {
+    text-align: center;
+    width: 100%;
+    background-color: black;
+    color: white;
+    border-style: none;
+    height: 30px;
+}
+
 section>details {
-    border: solid 1px red;
+    border: solid 1px rgba(128, 128, 128, 0.74);
     width: 90%;
     margin: 0 auto;
     border-radius: 5px;
     box-shadow: 5px 5px 5px rgb(143, 139, 139);
+    background-color: white;
 }
 
 section>#gameBox {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     height: auto;
-    width: auto;
+    width: 80%;
     gap: 5px;
     place-items: center;
     padding-bottom: 10px;
 }
 
-#gameBox>img,
-a {
-    width: 80%;
-    height: 100%;
+#gameBox>a {
+    width: 75%;
+    height: 75%;
+}
+
+img {
+    max-height: 100%;
+    max-width: 100%
 }
 
 .open {
@@ -81,4 +101,31 @@ a {
 
 .close {
     filter: brightness(0);
+}
+
+@media screen and (min-width:768px) {
+    section {
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+
+    section>#gameBox {
+        grid-template-columns: repeat(4, 1fr);
+        width: 60%;
+        height: 85%;
+    }
+
+    section>details {
+        width: 35%;
+        height: 70%;
+    }
+
+    section>div {
+        width: 60%;
+    }
+
+    #gameBox>a {
+        width: 70%;
+        height: 70%;
+    }
 }

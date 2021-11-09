@@ -14,13 +14,13 @@ btnBabyMode.addEventListener('click', function () {
 });
 
 btnMediumMode.addEventListener('click', function () {
-    btnBabyMode.href = '#gamePage';
+    btnMediumMode.href = '#gamePage';
     chooseDifficult('medium');
     startGame();
 });
 
 btnHardMode.addEventListener('click', function () {
-    btnBabyMode.href = '#gamePage';
+    btnHardMode.href = '#gamePage';
     chooseDifficult('hard');
     startGame();
 });
