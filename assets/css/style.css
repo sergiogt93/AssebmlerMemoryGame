@@ -66,13 +66,34 @@ section>div {
     height: 30px;
 }
 
-section>details {
+.gameData {
     border: solid 1px rgba(128, 128, 128, 0.74);
     width: 90%;
     margin: 0 auto;
     border-radius: 5px;
     box-shadow: 5px 5px 5px rgb(143, 139, 139);
     background-color: white;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+}
+
+.gameData>summary {
+    border: none;
+    box-shadow: 3px 3px 4px black;
+    cursor: pointer;
+    list-style: none;
+}
+
+summary {
+    display: list-item;
+    font-weight: bold;
+    text-decoration: underline 2px;
+}
+
+details[open]>summary:first-of-type {
+    list-style-type: none;
 }
 
 section>#gameBox {
@@ -115,7 +136,7 @@ img {
         height: 85%;
     }
 
-    section>details {
+    .gameData {
         width: 35%;
         height: 70%;
     }

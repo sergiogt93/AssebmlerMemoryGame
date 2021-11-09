@@ -42,3 +42,7 @@ var mode = null;
 
 //Etiquetas del tablero
 var cards = null;
+
+//Puntuación
+
+var finalScore = 100;

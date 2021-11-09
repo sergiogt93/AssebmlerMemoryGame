@@ -3,6 +3,9 @@ const btnChooseMode = document.querySelector('#startGame');
 const btnBabyMode = document.querySelector('#babyMode');
 const btnMediumMode = document.querySelector('#mediumMode');
 const btnHardMode = document.querySelector('#hardMode');
+const endview = document.getElementById('endPage');
+const btnClear = document.getElementById('resetCookies');
+const btnReset = document.getElementById('resetGame');
 
 function clearChilds() {
     let allChilds = Array.from(document.querySelectorAll('.scoreData'));
@@ -12,16 +15,14 @@ function clearChilds() {
 }
 
 function showAllUsers() {
+    //console.log(scoreBox);
     scoreBox.forEach(box => {
-        clearChilds(box);
+        clearChilds();
         allUsers.forEach(historic => {
             let currentUser = document.createElement('p');
-            currentUser.innerHTML = historic.username;
+            currentUser.innerHTML = `Player: <b>${historic.username}</b>,<br> Score: <b>${historic.puntuation}</b> `;
             currentUser.classList.add('scoreData');
-            let currentPuntuation = document.createElement('p');
-            currentPuntuation.innerHTML = historic.puntuation;
-            box.appendChild(currentUser, currentPuntuation);
-            currentPuntuation.classList.add('scoreData');
+            box.appendChild(currentUser);
         });
     });
 }
@@ -35,4 +36,18 @@ function saveUserName() {
         allUsers.push(gameCurrent);
         localStorage.setItem('allUsers', JSON.stringify(allUsers));
     }
+}
+
+function finalScore() {
+    scoreBox.forEach(box => {
+        console.log(box.lastChild);
+        box.lastChild.remove();
+        clearChilds(allUsers);
+        allUsers.forEach(historic => {
+            let currentUser = document.createElement('p');
+            currentUser.innerHTML = `Player: <b>${historic.username}</b>,<br> Score: <b>${finalScore}</b> `;
+            currentUser.classList.add('scoreData');
+            box.appendChild(currentUser);
+        });
+    });
 }

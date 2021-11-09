@@ -1,4 +1,5 @@
 function chooseDifficult(difficult) {
+    mode = difficult;
     switch (difficult) {
         case 'baby':
             setNewOrderBaby();
@@ -11,6 +12,10 @@ function chooseDifficult(difficult) {
 }
 
 function startGame() {
+    finalScore = 100;
+    setInterval(() => {
+        finalScore--;
+    }, 1000);
     //Número de pares encontrados
     foundPairs = 0;
     MAX_PAIR_NUMBER = orderForThisRound.length / 2;
@@ -105,13 +110,26 @@ function checkPair(image) {
     if (!card1) card1 = image;
     else card2 = image;
 
-    if (card1 && card2) {
-        if (card1.src === card2.src) {
-            canPlay = true;
-            checkIfWon();
-        } else {
-            canPlay = false;
-            resetOpenedCarts();
+    if (mode == 'hard') {
+        if (card1 && card2) {
+            if (card1.src === card2.src) {
+                canPlay = true;
+                checkIfWon();
+            } else {
+                canPlay = false;
+                endview.scrollIntoView();
+                resetOpenedCarts();
+            }
+        }
+    } else {
+        if (card1 && card2) {
+            if (card1.src === card2.src) {
+                canPlay = true;
+                checkIfWon();
+            } else {
+                canPlay = false;
+                resetOpenedCarts();
+            }
         }
     }
 }
@@ -120,8 +138,8 @@ function checkPair(image) {
 function checkIfWon() {
     foundPairs++;
     if (MAX_PAIR_NUMBER === foundPairs) {
-        const endview = document.getElementById('endPage');
         endview.scrollIntoView();
+        finalScore();
         setNewGame();
     } else {
         card1 = null;
