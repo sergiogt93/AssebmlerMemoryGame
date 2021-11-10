@@ -36,6 +36,7 @@ function saveUserName() {
         allUsers.push(gameCurrent);
         localStorage.setItem('allUsers', JSON.stringify(allUsers));
     } else {
+        allUsers = [];
         allUsers.push(gameCurrent);
         localStorage.setItem('allUsers', JSON.stringify(allUsers));
     }
