@@ -21,6 +21,10 @@
     height: 60%;
 }
 */
+html {
+    scroll-behavior: smooth !important;
+}
+
 body {
     background-color: whitesmoke;
 }
