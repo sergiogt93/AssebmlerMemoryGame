@@ -142,7 +142,12 @@ function checkPair(image) {
                     document.getElementById('msgEndGame').innerHTML = '😞 GAME OVER - TRY AGAIN 😞';
                     endview.scrollIntoView();
                     clearInterval(timer);
-                    resetOpenedCarts();
+                    currentScore = 0;
+                    allUsers = JSON.parse(localStorage.getItem('allUsers'));
+                    allUsers[allUsers.length - 1].puntuation = gameCurrent.puntuation;
+                    localStorage.setItem('allUsers', JSON.stringify(allUsers));
+                    allUsers = JSON.parse(localStorage.getItem('allUsers'));
+                    saveCurrentScore();
                 }
             }
         }
@@ -155,10 +160,16 @@ function checkPair(image) {
                 vidas--
                 switch (vidas) {
                     case 0:
-                        document.getElementById('msgEndGame').innerHTML = '😞 GAME OVER - TRY AGAIN 😞';
                         canPlay = false;
+                        document.getElementById('msgEndGame').innerHTML = '😞 GAME OVER - TRY AGAIN 😞';
                         endview.scrollIntoView();
                         clearInterval(timer);
+                        currentScore = 0;
+                        allUsers = JSON.parse(localStorage.getItem('allUsers'));
+                        allUsers[allUsers.length - 1].puntuation = gameCurrent.puntuation;
+                        localStorage.setItem('allUsers', JSON.stringify(allUsers));
+                        allUsers = JSON.parse(localStorage.getItem('allUsers'));
+                        saveCurrentScore();
                     case 1:
                         document.getElementById('imgLives').src = livesImg[0];
                         break;

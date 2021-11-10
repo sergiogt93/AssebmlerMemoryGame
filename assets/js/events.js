@@ -5,6 +5,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 
 btnChooseMode.addEventListener('click', function () {
+    vidas = 5;
     const valueUserName = document.querySelector('input').value;
     (valueUserName == '') ? gameCurrent.username = 'Anonimus': gameCurrent.username = valueUserName;
     gameCurrent.puntuation = 'Playing ...';

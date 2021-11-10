@@ -31,16 +31,21 @@ function showAllUsers() {
 }
 
 function saveUserName() {
-    if (localStorage.getItem('allUsers')) {
-        allUsers = JSON.parse(localStorage.getItem('allUsers'));
-        allUsers.push(gameCurrent);
+    if (vidas === 0) {
+        allUsers.pop();
         localStorage.setItem('allUsers', JSON.stringify(allUsers));
     } else {
-        allUsers = [];
-        allUsers.push(gameCurrent);
-        localStorage.setItem('allUsers', JSON.stringify(allUsers));
-    }
-    allUsers = JSON.parse(localStorage.getItem('allUsers'));
+        if (localStorage.getItem('allUsers')) {
+            allUsers = JSON.parse(localStorage.getItem('allUsers'));
+            allUsers.push(gameCurrent);
+            localStorage.setItem('allUsers', JSON.stringify(allUsers));
+        } else {
+            allUsers = [];
+            allUsers.push(gameCurrent);
+            localStorage.setItem('allUsers', JSON.stringify(allUsers));
+        }
+        allUsers = JSON.parse(localStorage.getItem('allUsers'));
+    };
 }
 
 function saveFinalScore() {
