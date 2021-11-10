@@ -2,10 +2,18 @@ function chooseDifficult(difficult) {
     mode = difficult;
     switch (difficult) {
         case 'baby':
+            vidas = 5;
+            document.getElementById('imgLives').src = '/assets/img/dibujos-animados-bebe-durmiendo_61878-356.jpeg';
             setNewOrderBaby();
             break;
         case 'medium':
+            vidas = 5;
+            document.getElementById('imgLives').src = livesImg[4];
+            setNewOrder();
+            break;
         case 'hard':
+            vidas = 2;
+            document.getElementById('imgLives').src = livesImg[1];
             setNewOrder();
             break;
     }
@@ -66,7 +74,7 @@ function openCards() {
     });
     setTimeout(() => {
         closeCards();
-    }, 3000);
+    }, 6000);
 }
 
 //Cerrar todas las tarjetas
@@ -125,9 +133,17 @@ function checkPair(image) {
                 canPlay = true;
                 checkIfWon();
             } else {
-                canPlay = false;
-                endview.scrollIntoView();
-                resetOpenedCarts();
+                vidas--
+                if (vidas > 0) {
+                    document.getElementById('imgLives').src = livesImg[0];
+                    resetOpenedCarts();
+                } else {
+                    canPlay = false;
+                    document.getElementById('msgEndGame').innerHTML = '😞 GAME OVER - TRY AGAIN 😞';
+                    endview.scrollIntoView();
+                    clearInterval(timer);
+                    resetOpenedCarts();
+                }
             }
         }
     } else {
@@ -136,7 +152,26 @@ function checkPair(image) {
                 canPlay = true;
                 checkIfWon();
             } else {
-                canPlay = false;
+                vidas--
+                switch (vidas) {
+                    case 0:
+                        document.getElementById('msgEndGame').innerHTML = '😞 GAME OVER - TRY AGAIN 😞';
+                        canPlay = false;
+                        endview.scrollIntoView();
+                        clearInterval(timer);
+                    case 1:
+                        document.getElementById('imgLives').src = livesImg[0];
+                        break;
+                    case 2:
+                        document.getElementById('imgLives').src = livesImg[1];
+                        break;
+                    case 3:
+                        document.getElementById('imgLives').src = livesImg[2];
+                        break;
+                    case 4:
+                        document.getElementById('imgLives').src = livesImg[3];
+                        break;
+                }
                 resetOpenedCarts();
             }
         }
@@ -172,10 +207,10 @@ function setNewGame() {
 // Score Ranking
 
 function scoreRanking() {
-    if(allUsers) {
+    if (allUsers) {
         const scoreSort = allUsers.sort((a, b) => b.puntuation - a.puntuation);
         const divRankings = document.querySelectorAll('.ranking');
-    
+
         divRankings.forEach(elementParent => {
             scoreSort.forEach(element => {
                 let scoreP = document.createElement('p');

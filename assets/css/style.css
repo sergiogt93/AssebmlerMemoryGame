@@ -85,6 +85,7 @@ section>div {
     align-items: start;
 }
 
+
 .gameData>summary {
     border: none;
     box-shadow: 3px 3px 4px black;
@@ -157,14 +158,18 @@ section>#gameBox {
 
 img {
     max-height: 100%;
-    max-width: 100%
+    max-width: 100%;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
 
 .open {
+    -webkit-filter: brightness(1);
     filter: brightness(1);
 }
 
 .close {
+    -webkit-filter: brightness(0);
     filter: brightness(0);
 }
 
@@ -180,9 +185,22 @@ img {
         height: 85%;
     }
 
-    .gameData {
+    .gameData,
+    #lives {
         width: 35%;
         height: 70%;
+    }
+
+    img.lives {
+        width: auto;
+        height: auto;
+    }
+
+    #lives {
+        width: auto;
+        height: auto;
+        grid-column: span 2;
+        align-self: end;
     }
 
     section>div {

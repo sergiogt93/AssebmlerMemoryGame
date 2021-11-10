@@ -50,3 +50,9 @@ var currentScore = 100;
 //Timer interval
 
 var timer = null;
+
+// Vidas
+
+var lives = 0;
+
+var livesImg = ['/assets/img/1corazon.png', '/assets/img/2corazones.png', '/assets/img/3corazones.png', '/assets/img/4corazones.png', '/assets/img/5corazones.png'];
